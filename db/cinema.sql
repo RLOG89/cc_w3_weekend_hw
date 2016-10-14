@@ -1,0 +1,21 @@
+DROP TABLE IF EXISTS Ticket;
+DROP TABLE IF EXISTS Customer;
+DROP TABLE IF EXISTS Film;
+
+CREATE TABLE Customer(
+id SERIAL4 PRIMARY KEY,
+name VARCHAR(255),
+funds DECIMAL(6, 2)
+);
+
+CREATE TABLE Film(
+id SERIAL4 PRIMARY KEY,
+title VARCHAR(255),
+price DECIMAL(4, 2)
+);
+
+CREATE TABLE Ticket(
+id SERIAL4 PRIMARY KEY,
+customer_id INT4 REFERENCES customer(id),
+film_id INT4 REFERENCES film(id)
+);
