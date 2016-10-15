@@ -27,6 +27,14 @@ class Ticket
     SqlRunner.run( sql )
   end
 
+  def update
+    sql = "UPDATE ticket 
+    SET customer_id = '#{@customer_id}', 
+    film_id = '#{@film_id}' 
+    WHERE id = #{@id}"
+    SqlRunner.run( sql )
+  end
+
   def customer
     sql = "SELECT * from customer WHERE id = #{@customer_id}"
     return Customer.map_item( sql )
@@ -40,6 +48,11 @@ class Ticket
   def self.all
     sql = "SELECT * FROM ticket"
     return Ticket.map_items(sql)
+  end
+
+  def self.delete_all
+    sql = "DELETE FROM ticket"
+    SqlRunner.run( sql )
   end
 
   def self.map_items( sql )

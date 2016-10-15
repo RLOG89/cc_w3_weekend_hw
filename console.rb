@@ -3,9 +3,9 @@ require_relative 'models/film'
 require_relative 'models/ticket'
 require 'pry-byebug'
 
-ticket.delete_all
-film.delete_all
-customer.delete_all
+Ticket.delete_all
+Film.delete_all
+Customer.delete_all
 
 customer1 = Customer.new( { 'name' => "Hank Moody", 'funds' => 5000.00 } )
 customer1.save
@@ -31,6 +31,8 @@ film5.save
 
 ticket1 = Ticket.new( {'customer_id' => 1, 'film_id' => 2 } )
 ticket1.save
+customer1.buy_ticket(film1)
+customer1.update
 ticket2 = Ticket.new( {'customer_id' => 2, 'film_id' => 3 } )
 ticket2.save
 ticket3 = Ticket.new( {'customer_id' => 3, 'film_id' => 2 } )

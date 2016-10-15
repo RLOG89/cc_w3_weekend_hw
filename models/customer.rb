@@ -30,9 +30,26 @@ class Customer
     SqlRunner.run( sql )
   end
 
+  def film
+    sql = "SELECT film.* FROM film INNER JOIN ticket ON ticket.film_id = film.id WHERE ticket.customer_id = #{@id}"
+    return Film.map_items( sql )
+  end
+
+  def buy_ticket(film)
+    if @funds >= film.price
+      @funds -= film.price && @funds.update
+    else puts "Sorry #{@customer.name}, you don't have enough money for this film."
+    end
+  end
+
   def self.all
     sql = "SELECT * FROM customer"
     return Customer.map_items(sql)
+  end
+
+  def self.delete_all
+    sql = "DELETE FROM customer"
+    SqlRunner.run( sql )
   end
 
   def self.map_items( sql )
@@ -46,3 +63,5 @@ class Customer
   end
 
 end
+
+# (@customer.funds >= @film.price) ? (@customer.funds -= @film.price) : "You don't have enough money for this film"
