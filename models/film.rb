@@ -2,7 +2,8 @@ require_relative '../db/sql_runner'
 
 class Film
 
-  attr_reader :id, :title, :price
+  attr_reader :id
+  attr_accessor :title, :price
 
   def initialize(options)
     @id = options['id'].to_i
@@ -11,9 +12,41 @@ class Film
   end
 
   def save
-    sql = "INSERT INTO film (title, price) VALUES ('#{@title}', #{@price}) RETURNING *"
+    sql = "INSERT INTO film(
+    title, price) 
+    VALUES ('#{@title}', #{@price}) 
+    RETURNING *"
     film = SqlRunner.run( sql ).first
     @id = film['id'].to_i
   end
+
+  def update
+    sql = "UPDATE film 
+    SET title = '#{@title}', 
+    price = '#{@price}' 
+    WHERE id = #{@id}"
+    SqlRunner.run( sql )
+  end
+
+  def delete
+    sql = "DELETE film WHERE id = #{@id}"
+    SqlRunner.run( sql )
+  end
+
+  def self.all
+    sql = "SELECT * FROM film"
+    return Film.map_items(sql)
+  end
+
+  def self.map_items( sql )
+    films = SqlRunner.run( sql )
+    result = films.map{ |film| Film.new(film) }
+    return result
+  end
+
+  def self.map_item( sql )
+    Film.map_items( sql ).first
+  end
+
 
 end

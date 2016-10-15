@@ -3,6 +3,10 @@ require_relative 'models/film'
 require_relative 'models/ticket'
 require 'pry-byebug'
 
+ticket.delete_all
+film.delete_all
+customer.delete_all
+
 customer1 = Customer.new( { 'name' => "Hank Moody", 'funds' => 5000.00 } )
 customer1.save
 customer2 = Customer.new( { 'name' => "Bob Hoskins", 'funds' => 100.00 } )
@@ -65,13 +69,6 @@ ticket19 = Ticket.new( {'customer_id' => 4, 'film_id' => 1 } )
 ticket19.save
 ticket20 = Ticket.new( {'customer_id' => 5, 'film_id' => 1 } )
 ticket20.save
-
-
-
-
-
-
-
 
 
 
