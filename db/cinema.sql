@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS Ticket;
+DROP TABLE IF EXISTS Snack;
 DROP TABLE IF EXISTS Customer;
 DROP TABLE IF EXISTS Film;
 
@@ -18,4 +19,10 @@ CREATE TABLE Ticket(
 id SERIAL4 PRIMARY KEY,
 customer_id INT4 REFERENCES customer(id),
 film_id INT4 REFERENCES film(id)
+);
+
+CREATE TABLE Snack(
+id SERIAL4 PRIMARY KEY,
+item VARCHAR(255),
+price DECIMAL(4, 2)
 );

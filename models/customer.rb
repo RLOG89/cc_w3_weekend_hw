@@ -39,7 +39,16 @@ class Customer
     if @funds >= film.price
       @funds -= film.price 
       update()
-    else puts "Sorry #{@customer.name}, you don't have enough money for this film."
+    else puts "Sorry #{@name}, you don't have enough money for this film."
+    end
+  end
+
+  def buy_snack(snack)
+    if @funds >= snack.price
+      @funds -= snack.price
+      update()
+    else puts "Sorry #{@name}, you can't afford that.  How about this instead?" 
+      #update this with a small version of snack if they have enough
     end
   end
 
@@ -65,4 +74,3 @@ class Customer
 
 end
 
-# (@customer.funds >= @film.price) ? (@customer.funds -= @film.price) : "You don't have enough money for this film"

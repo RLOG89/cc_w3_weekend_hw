@@ -27,14 +27,6 @@ class Ticket
     SqlRunner.run( sql )
   end
 
-  def update
-    sql = "UPDATE ticket 
-    SET customer_id = '#{@customer_id}', 
-    film_id = '#{@film_id}' 
-    WHERE id = #{@id}"
-    SqlRunner.run( sql )
-  end
-
   def customer
     sql = "SELECT * from customer WHERE id = #{@customer_id}"
     return Customer.map_item( sql )

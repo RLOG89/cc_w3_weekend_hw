@@ -1,9 +1,11 @@
 require_relative 'models/customer'
 require_relative 'models/film'
 require_relative 'models/ticket'
+require_relative 'models/snack'
 require 'pry-byebug'
 
 Ticket.delete_all
+Snack.delete_all
 Film.delete_all
 Customer.delete_all
 
@@ -29,9 +31,19 @@ film4.save
 film5 = Film.new( { 'title' => "Gone with the Wind", 'price' => 8.00 } )
 film5.save
 
+snack1 = Snack.new( { 'item' => "Small Popcorn", 'price' => 3.50 } )
+snack2 = Snack.new( { 'item' => "Large Popcorn", 'price' => 6.50 } )
+snack3 = Snack.new( { 'item' => "Small Hotdog", 'price' => 4.00 } )
+snack4 = Snack.new( { 'item' => "Large Hotdog", 'price' => 6.50 } )
+snack5 = Snack.new( { 'item' => "Small Soda", 'price' => 3.00 } )
+snack6 = Snack.new( { 'item' => "Large Soda", 'price' => 4.00 } )
+snack7 = Snack.new( { 'item' => "Small Coffee", 'price' => 2.50 } )
+snack8 = Snack.new( { 'item' => "Large Coffee", 'price' => 3.50 } )
+snack9 = Snack.new( { 'item' => "Pick 'n Mix", 'price' => 10.00 } )
+snack10 = Snack.new( { 'item' => "Ice-Cream", 'price' => 5.50 } )
+
 ticket1 = Ticket.new( {'customer_id' => 1, 'film_id' => 2 } )
 ticket1.save
-customer1.buy_ticket(film1)
 ticket2 = Ticket.new( {'customer_id' => 2, 'film_id' => 3 } )
 ticket2.save
 ticket3 = Ticket.new( {'customer_id' => 3, 'film_id' => 2 } )
@@ -71,7 +83,12 @@ ticket19.save
 ticket20 = Ticket.new( {'customer_id' => 5, 'film_id' => 1 } )
 ticket20.save
 
-
+customer1.buy_ticket(film1)
+customer1.buy_ticket(film2)
+customer3.buy_ticket(film2)
+customer1.buy_snack(snack2)
+customer1.buy_snack(snack4)
+customer1.buy_snack(snack6)
 
 binding.pry
 nil
