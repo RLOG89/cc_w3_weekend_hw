@@ -8,7 +8,7 @@ class Customer
   def initialize(options)
     @id = options['id'].to_i
     @name = options['name']
-    @funds = options['funds']
+    @funds = options['funds'].to_f
   end
 
   def save
@@ -37,7 +37,8 @@ class Customer
 
   def buy_ticket(film)
     if @funds >= film.price
-      @funds -= film.price && @funds.update
+      @funds -= film.price 
+      update()
     else puts "Sorry #{@customer.name}, you don't have enough money for this film."
     end
   end
