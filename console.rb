@@ -52,47 +52,6 @@ snack9.save
 snack10 = Snack.new( { 'item' => "Ice-Cream", 'price' => 5.50 } )
 snack10.save
 
-# ticket1 = Ticket.new( {'customer_id' => 1, 'film_id' => 2 } )
-# ticket1.save
-# ticket2 = Ticket.new( {'customer_id' => 2, 'film_id' => 3 } )
-# ticket2.save
-# ticket3 = Ticket.new( {'customer_id' => 3, 'film_id' => 2 } )
-# ticket3.save
-# ticket4 = Ticket.new( {'customer_id' => 1, 'film_id' => 4 } )
-# ticket4.save
-# ticket5 = Ticket.new( {'customer_id' => 4, 'film_id' => 5 } )
-# ticket5.save
-# ticket6 = Ticket.new( {'customer_id' => 5, 'film_id' => 5 } )
-# ticket6.save
-# ticket7 = Ticket.new( {'customer_id' => 1, 'film_id' => 3 } )
-# ticket7.save
-# ticket8 = Ticket.new( {'customer_id' => 2, 'film_id' => 2 } )
-# ticket8.save
-# ticket9 = Ticket.new( {'customer_id' => 3, 'film_id' => 5 } )
-# ticket9.save
-# ticket10 = Ticket.new( {'customer_id' => 1, 'film_id' => 4 } )
-# ticket10.save
-# ticket11 = Ticket.new( {'customer_id' => 4, 'film_id' => 4 } )
-# ticket11.save
-# ticket12 = Ticket.new( {'customer_id' => 5, 'film_id' => 3 } )
-# ticket12.save
-# ticket13 = Ticket.new( {'customer_id' => 2, 'film_id' => 5 } )
-# ticket13.save
-# ticket14 = Ticket.new( {'customer_id' => 5, 'film_id' => 3 } )
-# ticket14.save
-# ticket15 = Ticket.new( {'customer_id' => 3, 'film_id' => 2 } )
-# ticket15.save
-# ticket16 = Ticket.new( {'customer_id' => 1, 'film_id' => 1 } )
-# ticket16.save
-# ticket17 = Ticket.new( {'customer_id' => 2, 'film_id' => 1 } )
-# ticket17.save
-# ticket18 = Ticket.new( {'customer_id' => 3, 'film_id' => 1 } )
-# ticket18.save
-# ticket19 = Ticket.new( {'customer_id' => 4, 'film_id' => 1 } )
-# ticket19.save
-# ticket20 = Ticket.new( {'customer_id' => 5, 'film_id' => 1 } )
-# ticket20.save
-
 customer1.buy_ticket(film1)
 customer1.buy_ticket(film2)
 customer1.buy_ticket(film3)
@@ -108,7 +67,6 @@ customer2.buy_ticket(film3)
 customer1.buy_snack(snack2)
 customer1.buy_snack(snack4)
 customer1.buy_snack(snack6)
-customer1.ticket_count
 
 binding.pry
 nil

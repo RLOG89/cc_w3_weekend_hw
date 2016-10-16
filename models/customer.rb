@@ -65,10 +65,6 @@ class Customer
      tickets.count
   end
 
-  def film_popularity
-    sql = "SELECT customer_id, count(*) FROM film"
-  end 
-
   def self.all
     sql = "SELECT * FROM customer"
     return Customer.map_items(sql)

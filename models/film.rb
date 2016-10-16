@@ -38,6 +38,12 @@ class Film
     return Customer.map_items( sql )
   end
 
+  def popularity
+    sql = "SELECT * FROM ticket WHERE film_id = #{@id}"
+    popularity = Ticket.map_items( sql )
+    popularity.count
+  end 
+
   def self.all
     sql = "SELECT * FROM film"
     return Film.map_items(sql)
