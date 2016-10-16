@@ -37,7 +37,9 @@ class Customer
 
   def buy_ticket(film)
     if @funds >= film.price
-      @funds -= film.price 
+      @funds -= film.price
+      ticket = Ticket.new('customer_id' => @id , 'film_id' => film.id) 
+      ticket.save
       update()
     else puts "Sorry #{@name}, you don't have enough money for this film."
     end
@@ -47,10 +49,17 @@ class Customer
     if @funds >= snack.price
       @funds -= snack.price
       update()
-    else puts "Sorry #{@name}, you can't afford that.  How about this instead?" 
+    else
+      puts "Sorry #{@name}, you can't afford that." 
       #update this with a small version of snack if they have enough
     end
   end
+
+  def ticket_count
+    sql = "SELECT customer_id, count(*) FROM ticket WHERE customer_id = #{@id} GROUP BY customer_id"
+     tickets = SqlRunner.run( sql ).first
+     return tickets.values[1].to_i
+  end 
 
   def self.all
     sql = "SELECT * FROM customer"
