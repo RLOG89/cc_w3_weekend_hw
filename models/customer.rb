@@ -41,7 +41,6 @@ class Customer
       ticket = Ticket.new('customer_id' => @id , 'film_id' => film.id) 
       ticket.save
       update()
-    else puts "Sorry #{@name}, you don't have enough money for this film."
     end
   end
 
@@ -50,15 +49,24 @@ class Customer
       @funds -= snack.price
       update()
     else
-      puts "Sorry #{@name}, you can't afford that." 
-      #update this with a small version of snack if they have enough
+      #update this to check if they want a small version of snack if they have enough for that
     end
   end
 
+  # def ticket_count
+  #   sql = "SELECT customer_id, count(*) FROM ticket WHERE customer_id = #{@id} GROUP BY customer_id"
+  #    tickets = SqlRunner.run( sql ).first
+  #    return tickets.values[1]
+  # end
+
   def ticket_count
-    sql = "SELECT customer_id, count(*) FROM ticket WHERE customer_id = #{@id} GROUP BY customer_id"
-     tickets = SqlRunner.run( sql ).first
-     return tickets.values[1].to_i
+    sql = "SELECT * FROM ticket WHERE customer_id = #{@id}"
+     tickets = Ticket.map_items( sql )
+     tickets.count
+  end
+
+  def film_popularity
+    sql = "SELECT customer_id, count(*) FROM film"
   end 
 
   def self.all
